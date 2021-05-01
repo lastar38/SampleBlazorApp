@@ -75,6 +75,13 @@ using SampleBlazorApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "D:\work\SampleBlazorApp\SampleBlazorApp\SampleBlazorApp\Pages\Sample.razor"
+using SampleBlazorApp.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/sample")]
     public partial class Sample : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -84,18 +91,14 @@ using SampleBlazorApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 11 "D:\work\SampleBlazorApp\SampleBlazorApp\SampleBlazorApp\Pages\Sample.razor"
+#line 26 "D:\work\SampleBlazorApp\SampleBlazorApp\SampleBlazorApp\Pages\Sample.razor"
        
-    int val = 0;
-    int total = 0;
+    private Mydata mydata = new Mydata();
+    private string message = "Please input form";
 
-    void Calc()
+    private void doAction()
     {
-        total = 0;
-        for (int i = 0; i < val; i++)
-        {
-            total += i;
-        }
+        message = mydata.ToString();
     }
 
 #line default

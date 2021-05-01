@@ -1,23 +1,34 @@
 ﻿@page "/sample"
+@using SampleBlazorApp.Data
 
 <h1>Sample</h1>
 
-<p class="h3">Total: @total</p>
-<div class="form-row">
-    <input type="number" @bind="val" class="form-control col-9" />
-    <button @onclick="Calc" class="btn btn-primary col">Click</button>
-</div>
+<p class="h3">@message</p>
+
+<EditForm Model="@mydata" OnValidSubmit="@doAction">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">Name
+        <InputText id="name" @bind-Value="@mydata.Name" class="form-control"></InputText>
+    </div>
+    <div class="form-group">Password
+    <InputText type="password" id="password"
+               @bind-Value="@mydata.Password"
+               class="form-control" />
+    </div>
+    <div class="form-group">Mail
+        <InputText id="mail" @bind-Value="@mydata.Mail"
+                   class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Click</button>
+</EditForm> 
 
 @code {
-    int val = 0;
-    int total = 0;
+    private Mydata mydata = new Mydata();
+    private string message = "Please input form";
 
-    void Calc()
+    private void doAction()
     {
-        total = 0;
-        for (int i = 0; i < val; i++)
-        {
-            total += i;
-        }
+        message = mydata.ToString();
     }
 }
